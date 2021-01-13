@@ -6,7 +6,7 @@
 
     <style>
         body{
-            color: #ffffff;
+            color: #5b5b5b;
             background-color: #0b0b0b;
 
             /*font*/
@@ -16,11 +16,16 @@
         }
 
         .time{
+            color: #ffffff;
             /*margins*/
             margin-top: 45vh;
 
             /*font*/
-            font-size: 30px;
+            font-size: 40px;
+        }
+
+        .timetype{
+            margin-top: 10px;
         }
 
         .footer{
@@ -31,27 +36,27 @@
         }
     </style>
 </head>
-<body onresize="timeFunction();" onload="timeFunction();">
+<body onload="timeFunc();">
 
     <div class="time" id="time">00 // 00 // 00</div>
+    <div class="timetype">zulu</div>
     <div class="date"></div>
-    <div class="footer">moment by dark-coffee, 2021</div>
+    <div class="footer">dark-coffee, 2021</div>
 
     <script>
-        function timeFunction(){
+        function timeFunc(){
 
-            //Define Variables
+            var tfDate = new Date();
+            var tfHours = tfDate.getUTCHours();
+            var tfMins = string(tfDate.getUTCMinutes()).padStart(2, '0');
+            var tfSecs = string(tfDate.getUTCSeconds()).padStart(2, '0');
+            //alert("time function" + tfDate);
+
             var timeDisplay = document.getElementById("time");
-            var hours = Date.hours();
-            var mins = Date.Minutes();
-            var secs = Date.Seconds();
-            var datetime = new date();
+            timeDisplay.innerHTML = tfHours + " // " + tfMins + " // " + tfSecs;
+        };
 
-            //Write time to Screen
-            timeDisplay.innerHTML =  datetime;
-
-            alert("" + date.now() + "");
-            };
+        setInterval(timeFunc, 1000);
     </script>
 </body>
 </html>
