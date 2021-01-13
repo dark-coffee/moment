@@ -5,24 +5,52 @@
     <title>dark-coffee | moment</title>
 
     <style>
+        body{
+            color: #ffffff;
+            background-color: #0b0b0b;
 
+            /*font*/
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-weight: bolder;
+        }
+
+        .time{
+            /*margins*/
+            margin-top: 45vh;
+
+            /*font*/
+            font-size: 30px;
+        }
+
+        .footer{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-weight: lighter;
+        }
     </style>
-</head onload="timeFunction();">
-<body>
+</head>
+<body onresize="timeFunction();" onload="timeFunction();">
 
-    <div class="time"></div>
+    <div class="time" id="time">00 // 00 // 00</div>
     <div class="date"></div>
     <div class="footer">moment by dark-coffee, 2021</div>
 
     <script>
-        function timeFunction () {
+        function timeFunction(){
 
             //Define Variables
             var timeDisplay = document.getElementById("time");
+            var hours = Date.hours();
+            var mins = Date.Minutes();
+            var secs = Date.Seconds();
+            var datetime = new date();
 
             //Write time to Screen
-            timeDisplay.innerHTML =  getHours() + "//" + getMinutes() + "//" + getSeconds();
+            timeDisplay.innerHTML =  datetime;
 
+            alert("" + date.now() + "");
             };
     </script>
 </body>
