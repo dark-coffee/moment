@@ -48,8 +48,8 @@
 
             var tfDate = new Date();
             var tfHours = tfDate.getUTCHours();
-            var tfMins = string(tfDate.getUTCMinutes()).padStart(2, '0');
-            var tfSecs = string(tfDate.getUTCSeconds()).padStart(2, '0');
+            var tfMins = tfDate.getUTCMinutes();
+            var tfSecs = tfDate.getUTCSeconds();
             //alert("time function" + tfDate);
 
             var timeDisplay = document.getElementById("time");
