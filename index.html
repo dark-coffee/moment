@@ -5,9 +5,9 @@
     <title>dark-coffee | moment</title>
 
     <style>
-        
+
     </style>
-</head>
+</head onload="timeFunction();">
 <body>
 
     <div class="time"></div>
@@ -15,7 +15,15 @@
     <div class="footer">moment by dark-coffee, 2021</div>
 
     <script>
-    
+        function timeFunction () {
+
+            //Define Variables
+            var timeDisplay = document.getElementById("time");
+
+            //Write time to Screen
+            timeDisplay.innerHTML = "hello! this window is: " + debugWindowWidth + "x" + debugWindowHeight + ".";
+
+            };
     </script>
 </body>
 </html>
