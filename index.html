@@ -5,6 +5,16 @@
     <title>dark-coffee | moment</title>
 
     <style>
+        /* Entire Document */
+        html{
+            /* Prevent Highlighting */
+            user-select: none;
+            -webkit-user-select: none;
+
+            /* Force Cursor */
+            cursor: default;
+        }
+
         body{
             color: #5b5b5b;
             background-color: #0b0b0b;
@@ -13,6 +23,7 @@
             text-align: center;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
             font-weight: bolder;
+
         }
 
         .time, .time-2{
@@ -70,31 +81,31 @@
     <script>
         function timeFunc(){
 
+            //Get time
             var tfDate = new Date();
             var tfHours = ((tfDate.getUTCHours()).toString()).padStart(2,0);
             var tfMins = ((tfDate.getUTCMinutes()).toString()).padStart(2,0);
             var tfSecs = ((tfDate.getUTCSeconds()).toString()).padStart(2,0);
-            var tfYear = tfDate.getUTCFullYear();
-            var tfMonth = (((tfDate.getUTCMonth())+1).toString()).padStart(2,0);
-            var tfDay = ((tfDate.getUTCDay()).toString()).padStart(2,0);
-            var tfFullDate = tfYear + '-' + tfMonth + '-' + tfDay;
-            //alert("time function" + tfDate);
 
-            //var timeDisplay = document.getElementById("time");
-            //timeDisplay.innerHTML = tfHours + " // " + tfMins + " // " + tfSecs;
+            //Create date string
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            var tfDateString = tfDate.toLocaleDateString("en-US", options);
 
+            //Get datetime display elements
             var hoursDisplay = document.getElementById("hours");
             var minsDisplay = document.getElementById("minutes");
             var secsDisplay = document.getElementById("seconds");
             var dateDisplay = document.getElementById("date");
 
+            //Write datetime display elements
             hoursDisplay.innerHTML = tfHours;
             minsDisplay.innerHTML = tfMins;
             secsDisplay.innerHTML = tfSecs;
-            dateDisplay.innerHTML = tfFullDate;
+            dateDisplay.innerHTML = tfDateString;
+
         };
 
-        setInterval(timeFunc, 1000);
+        setInterval(timeFunc, 100);
     </script>
 </body>
 </html>
