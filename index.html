@@ -28,6 +28,13 @@
             margin-top: 12px;
         }
 
+        .date{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-weight: lighter;
+        }
+
         .footer{
             position: absolute;
             bottom: 10px;
@@ -57,7 +64,7 @@
         <div class="seconds" id="seconds">00</div>
     </div>
     <div class="timetype">zulu</div>
-    <div class="date"></div>
+    <div class="date">&#128197;<span id="date" style="margin-left:10px; font: bolder;"></span></div>
     <div class="footer">dark-coffee, 2021</div>
 
     <script>
@@ -67,6 +74,10 @@
             var tfHours = ((tfDate.getUTCHours()).toString()).padStart(2,0);
             var tfMins = ((tfDate.getUTCMinutes()).toString()).padStart(2,0);
             var tfSecs = ((tfDate.getUTCSeconds()).toString()).padStart(2,0);
+            var tfYear = tfDate.getUTCFullYear();
+            var tfMonth = (((tfDate.getUTCMonth())+1).toString()).padStart(2,0);
+            var tfDay = ((tfDate.getUTCDay()).toString()).padStart(2,0);
+            var tfFullDate = tfYear + '-' + tfMonth + '-' + tfDay;
             //alert("time function" + tfDate);
 
             //var timeDisplay = document.getElementById("time");
@@ -75,10 +86,12 @@
             var hoursDisplay = document.getElementById("hours");
             var minsDisplay = document.getElementById("minutes");
             var secsDisplay = document.getElementById("seconds");
+            var dateDisplay = document.getElementById("date");
 
             hoursDisplay.innerHTML = tfHours;
             minsDisplay.innerHTML = tfMins;
             secsDisplay.innerHTML = tfSecs;
+            dateDisplay.innerHTML = tfFullDate;
         };
 
         setInterval(timeFunc, 1000);
