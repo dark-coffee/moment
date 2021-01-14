@@ -15,17 +15,17 @@
             font-weight: bolder;
         }
 
-        .time{
+        .time, .time-2{
             color: #ffffff;
             /*margins*/
-            margin-top: 45vh;
+            margin-top: 43vh;
 
             /*font*/
             font-size: 40px;
         }
 
         .timetype{
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .footer{
@@ -34,11 +34,28 @@
             right: 10px;
             font-weight: lighter;
         }
+
+        .hours, .minutes, .seconds, .time-separator{
+            display: inline-block;
+            margin-left: 0px;
+            margin-right: 0px;
+            height: 60px;
+            width: 60px;
+            line-height: 60px;
+            letter-spacing: 3px;
+        }
     </style>
 </head>
 <body onload="timeFunc();">
 
-    <div class="time" id="time">00 // 00 // 00</div>
+    <!----<div class="time" id="time">00 // 00 // 00</div>-->
+    <div class="time-2">
+        <div class="hours" id="hours">00</div>
+        <div class="time-separator"> // </div>
+        <div class="minutes" id="minutes">00</div>
+        <div class="time-separator"> // </div>
+        <div class="seconds" id="seconds">00</div>
+    </div>
     <div class="timetype">zulu</div>
     <div class="date"></div>
     <div class="footer">dark-coffee, 2021</div>
@@ -47,13 +64,21 @@
         function timeFunc(){
 
             var tfDate = new Date();
-            var tfHours = tfDate.getUTCHours();
-            var tfMins = tfDate.getUTCMinutes();
-            var tfSecs = tfDate.getUTCSeconds();
+            var tfHours = ((tfDate.getUTCHours()).toString()).padStart(2,0);
+            var tfMins = ((tfDate.getUTCMinutes()).toString()).padStart(2,0);
+            var tfSecs = ((tfDate.getUTCSeconds()).toString()).padStart(2,0);
             //alert("time function" + tfDate);
 
-            var timeDisplay = document.getElementById("time");
-            timeDisplay.innerHTML = tfHours + " // " + tfMins + " // " + tfSecs;
+            //var timeDisplay = document.getElementById("time");
+            //timeDisplay.innerHTML = tfHours + " // " + tfMins + " // " + tfSecs;
+
+            var hoursDisplay = document.getElementById("hours");
+            var minsDisplay = document.getElementById("minutes");
+            var secsDisplay = document.getElementById("seconds");
+
+            hoursDisplay.innerHTML = tfHours;
+            minsDisplay.innerHTML = tfMins;
+            secsDisplay.innerHTML = tfSecs;
         };
 
         setInterval(timeFunc, 1000);
