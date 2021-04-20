@@ -46,6 +46,13 @@
             margin-top: 12px;
         }
 
+        .time-3{
+            color: #aaa;
+            margin-top: 60px;
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+
         .date{
             position: absolute;
             bottom: 10px;
@@ -94,6 +101,7 @@
     </div>
     <div class="timetype">zulu</div>
     <div class="time-3" id="internetTime">@0000.00</div>
+    <div class="timetype">beats</div>
     <div class="date">&#128197;<span id="date" style="margin-left:10px; font: bolder;"></span></div>
     <div class="theme-button" onclick="themeswitch();">&#x263D;</div>
     <div class="footer">git:dark-coffee, 2021</div>
@@ -106,6 +114,7 @@
             var tfHours = ((tfDate.getUTCHours()).toString()).padStart(2,0);
             var tfMins = ((tfDate.getUTCMinutes()).toString()).padStart(2,0);
             var tfSecs = ((tfDate.getUTCSeconds()).toString()).padStart(2,0);
+            var beatsTime = "@"+((((tfDate.getUTCSeconds()+3600))+((tfDate.getUTCMinutes()+60)*60)+((tfDate.getUTCHours()+1)*3600))/86.4).toFixed(2);
 
             //Create date string
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -116,16 +125,18 @@
             var minsDisplay = document.getElementById("minutes");
             var secsDisplay = document.getElementById("seconds");
             var dateDisplay = document.getElementById("date");
+            var beatsDisplay = document.getElementById("internetTime");
 
             //Write datetime display elements
             hoursDisplay.innerHTML = tfHours;
             minsDisplay.innerHTML = tfMins;
             secsDisplay.innerHTML = tfSecs;
             dateDisplay.innerHTML = tfDateString;
+            beatsDisplay.innerHTML = beatsTime;
 
         };
 
-        setInterval(timeFunc, 100);
+        setInterval(timeFunc, 10);
 
 
         //themeswitcher
